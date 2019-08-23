@@ -1,3 +1,4 @@
+
 #include <Arduino.h>
 #include "ESP32_MailClient.h"
 #include "SD.h"
@@ -87,15 +88,17 @@ void setup()
   Serial.println("Sending email...");
 
   //Set the Email host, port, account and password
-  smtpData.setLogin("outlook.office365.com", 587, "xxxx@hotmail.com", "xxxx");
-
+  smtpData.setLogin("outlook.office365.com", 587, "xxx@hotmail.com", "xxxx");
+  //smtpData.setLogin("smtp.qq.com", 587, "xxx@qq.com", "xxx");
+  //smtpData.setLogin("smtp.163.com", 587, "xxx@163.com", "xxx");
   //For library version 1.2.0 and later which STARTTLS protocol was supported,the STARTTLS will be 
   //enabled automatically when port 587 was used, or enable it manually using setSTARTTLS function.
   //smtpData.setSTARTTLS(true);
 
   //Set the sender name and Email
   smtpData.setSender("ESP32", "xxxx@hotmail.com");
-
+  //smtpData.setSender("ESP32", "xxxx@qq.com");
+ 
   //Set Email priority or importance High, Normal, Low or 1 to 5 (1 is highest)
   smtpData.setPriority("High");
 
@@ -106,7 +109,7 @@ void setup()
   smtpData.setMessage("<div style=\"color:#ff0000;font-size:20px;\">Hello World! - From ESP32</div>", true);
 
   //Add recipients, can add more than one recipient
-  smtpData.addRecipient("xxxx@163.com");
+  smtpData.addRecipient("xxx@163.com");
 
 
 
